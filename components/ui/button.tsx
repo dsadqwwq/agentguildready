@@ -1,0 +1,1 @@
+import * as React from 'react';type P=React.ButtonHTMLAttributes<HTMLButtonElement>&{variant?:'primary'|'secondary'};export function Button({variant='primary',className='',...props}:P){const base='btn '+(variant==='secondary'?'btn-secondary':'btn-primary');return <button className={base+' '+className}{...props}/>;}

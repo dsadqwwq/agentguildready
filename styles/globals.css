@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body { height: 100%; background: #0b0f19; }
+.card { @apply bg-white/5 border border-white/10 rounded-2xl; }
+.btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium; }
+.btn-primary { @apply bg-white text-black hover:bg-white/90; }
+.btn-secondary { @apply bg-white/10 border border-white/10 hover:bg-white/20 text-white; }
+.badge { @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs border border-white/10 bg-white/10; }
