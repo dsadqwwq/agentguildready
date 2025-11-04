@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#9945FF"/><stop offset="50%" stop-color="#14F195"/><stop offset="100%" stop-color="#00FFA3"/>
+</linearGradient>
+<g fill="url(#g)">
+  <path d="M64 52h164l-36 36H28z"/><path d="M28 112h200l-36 36H64z"/><path d="M64 172h164l-36 36H28z"/>
+</g></svg>

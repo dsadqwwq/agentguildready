@@ -2,9 +2,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '../components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card'
-import { Badge } from '../components/ui/badge'
-import { Tabs } from '../components/ui/tabs'
-import { Wallet, BookOpen, Rocket, Flame, Bot, ChartPie, ExternalLink, Cpu, Link2 } from 'lucide-react'
+import { BookOpen, Rocket, Flame, Bot, ChartPie, ExternalLink, Cpu, Link2 } from 'lucide-react'
 import Image from 'next/image'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { PieChart as RPieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts'
@@ -14,6 +12,7 @@ const tokenomicsData = [
   { name: 'Treasury (Airdrops)', value: 15 },
   { name: 'Team (Vested)', value: 5 },
 ]
+const COLORS = ['#00FFFF', '#00A0A0', '#005555']
 
 export default function Page() {
   const scrollToAgent = () => {
@@ -30,7 +29,10 @@ export default function Page() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold tracking-wide text-white">Agent Guild</span>
-                <span className="badge">Solana</span>
+                <span className="badge inline-flex items-center gap-1">
+                  <img src="/assets/solana-logo.svg" alt="Solana" width="12" height="12" />
+                  Solana
+                </span>
                 <span className="badge">$GUILD</span>
               </div>
               <p className="text-xs text-white/50">Coordination for human + autonomous agents</p>
@@ -153,7 +155,7 @@ export default function Page() {
           <ResponsiveContainer width="100%" height="100%">
             <RPieChart>
               <Pie data={tokenomicsData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={100} stroke="none">
-                {tokenomicsData.map((_, index) => (<Cell key={index} />))}
+                {tokenomicsData.map((_, index) => (<Cell key={index} fill={COLORS[index % COLORS.length]} />))}
               </Pie>
               <Tooltip contentStyle={{ background: '#0B0F19', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12 }} labelStyle={{ color: '#fff' }} itemStyle={{ color: '#fff' }} />
             </RPieChart>
@@ -194,13 +196,21 @@ export default function Page() {
 
       <footer className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
-          <div className="text-white/60 text-sm">
-            © {new Date().getFullYear()} Agent Guild • Built for Solana. This site is a design + research preview.
+          <div className="text-white/60 text-sm flex items-center gap-2">
+            © {new Date().getFullYear()} Agent Guild • Built for Solana • Powered by
+            <a href="https://pump.fun" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
+              <img src="/assets/pumpfun-pill.png" alt="Pump.fun" width="80" height="24" className="inline-block rounded-full" />
+            </a>
           </div>
           <div className="flex md:justify-end gap-3">
-            <a href="https://twitter.com/agentguild" target="_blank" rel="noreferrer" className="btn btn-secondary">X / Twitter</a>
-            <a href="https://discord.gg/agentguild" target="_blank" rel="noreferrer" className="btn btn-secondary">Discord</a>
-            <a href="https://github.com/agentguild" target="_blank" rel="noreferrer" className="btn btn-secondary">GitHub</a>
+            <a href="https://x.com/agent_guild" target="_blank" rel="noreferrer" className="btn btn-secondary flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 24 24"><path d="M18.244 2H21l-6.66 7.639L22 22h-6.884l-4.449-5.797L5.49 22H2.732l7.103-8.15L2 2h6.96l4.028 5.333L18.244 2Zm-2.395 17.83h1.792L8.33 4.072H6.404l9.445 15.758Z"/></svg>
+              X
+            </a>
+            <a href="https://t.me/agentguild" target="_blank" rel="noreferrer" className="btn btn-secondary flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 24 24"><path d="M9.51 15.283 9.27 18.4c.347 0 .498-.15.678-.33l1.626-1.556 3.37 2.487c.617.342 1.056.163 1.225-.57l2.215-9.337c.202-.82-.297-1.14-.83-.94L5.98 11.375c-.8.31-.787.756-.135.96l3.373 1.05 7.818-4.93c.368-.24.703-.107.427.132l-6.953 6.696Z"/></svg>
+              Telegram
+            </a>
           </div>
         </div>
       </footer>
